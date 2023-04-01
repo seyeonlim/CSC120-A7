@@ -1,7 +1,7 @@
 /**
  * Course: CSC 120 (section 2)
  * @author Seyeon Lim
- * @version March 28, 2023
+ * @version April 4, 2023
  * Description: A class that creates a cafe with a certain name, address, and number of floors.
  *              Allows us to sell coffee, restock inventory, and prints out the inventory.
  */
@@ -13,16 +13,27 @@ public class Cafe extends Building {
     private int nCreams; 
     private int nCups; 
 
-
+    /**
+     * Constructs a 1 floor cafe with its name and address unknown
+     */
     public Cafe() {
         this("<Name Unknown>", "<Address Unknown>", 1);
     }
 
+    /**
+     * Constructs a cafe with its address only
+     * @param address address of the cafe
+     */
     public Cafe(String address) {
         this(); // Call default constructor
         this.address = address; // Override address
     }
 
+    /**
+     * Constructs a 1 floor cafe with is name and address only
+     * @param name name of the cafe
+     * @param address address of the cafe
+     */
     public Cafe(String name, String address) {
         this(name, address, 1); // Call full constructor with hard-coded # floors
     }
@@ -93,11 +104,19 @@ public class Cafe extends Building {
         System.out.println("Cups: " + this.nCups);
     }
 
-
+    /**
+     * A method that prints out all the available options of the building
+     */
     public void showOptions() {
         System.out.println("Available options at " + this.name + ":\n + sellCoffee() \n + restock() \n + printInventory() \n");
     }
 
+    /**
+     * A method that prints out a message that one cannot access other floors  
+     */
+    public void goToFloor(int floorNum) {
+          System.out.println("You cannot access other floors.");
+        }
 
     /**
      * Demonstration of making a cafe and using printInventory(), sellCoffee(...), 

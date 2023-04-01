@@ -1,11 +1,11 @@
 /**
  * Course: CSC 120 (section 2)
  * @author Seyeon Lim
- * @version March 28, 2023
+ * @version April 4, 2023
  * Description: A class that creates a library with a certain name, address,
  *              and number of floors. Allows to add or remove a certain book from the collection,
  *              check out or return a book, and returns the availability of the book or whether the collection
- *              has a certain book or not.
+ *              has a certain book or not. Allows a person to move to another floor. 
  */
 import java.util.Hashtable;
 import java.util.Map;
@@ -14,15 +14,27 @@ public class Library extends Building{
 
   private Hashtable<String, Boolean> collection;
 
+  /**
+   * Constructs a 1 floor library with its name and address unknown
+   */
   public Library() {
     this("<Name Unknown>", "<Address Unknown>", 1);
 }
 
+  /**
+   * Constructs a library with its address only
+   * @param address address of the library
+   */
   public Library(String address) {
     this(); // Call default constructor
     this.address = address; // Override address
 }
 
+  /**
+   * Constructs a 1 floor library with its name and address only
+   * @param name name of the library
+   * @param address address of the library
+   */
   public Library(String name, String address) {
     this(name, address, 1); // Call full constructor with hard-coded # floors
 }
@@ -136,10 +148,19 @@ public class Library extends Building{
     System.out.println("====================");
   }
   
+  /**
+   * A method that prints out all the available options of the house
+   */
   public void showOptions() {
     System.out.println("Available options at " + this.name + ":\n + addTitle() \n + removeTitle() \n + checkOut() \n + returnBook()\n + containsTitle() \n + isAvailable()\n + printCollection()\n");
   }
 
+  /**
+     * A method that allows a person to move to another floor when there is an elevator in the library
+     * @param floorNum the number of the floor that the person is trying to access
+     * @throws RuntimeException when the person is not inside the building
+     * @throws RuntimeException when the person tries to access and invalid floor number
+     */
   public void goToFloor(int floorNum) {
     if (this.activeFloor == -1) {
         throw new RuntimeException("You are not inside this Library. Must call enter() before navigating between floors.");

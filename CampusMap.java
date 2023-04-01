@@ -1,10 +1,18 @@
+/**
+ * Course: CSC 120 (section 2)
+ * @author Seyeon Lim
+ * @version April 4, 2023
+ *          Description: A campus map class that allows us to add or remove a building from the map
+ */
 import java.util.ArrayList;
 
 public class CampusMap {
 
     ArrayList<Building> buildings;
 
-    /* Default constructor, initializes empty ArrayList */
+    /**
+     * Default constructor that initializes empty ArrayList 
+     */
     public CampusMap() {
         buildings = new ArrayList<Building>();
     }
@@ -31,6 +39,10 @@ public class CampusMap {
         return b;
     }
 
+    /**
+     * A method that prints out the directory of buildings
+     * @return mapString list of buildings created
+     */
     public String toString() {
         String mapString = "DIRECTORY of BUILDINGS";
 
@@ -40,6 +52,10 @@ public class CampusMap {
         return mapString;
     }
 
+    /**
+     * Demonstration of constructing buildings, cafes, houses, and libraries.
+     * @param args
+     */
     public static void main(String[] args) {
         CampusMap myMap = new CampusMap();
         myMap.addBuilding(new Building("Ford Hall", "100 Green Street Northampton, MA 01063", 4));

@@ -1,11 +1,11 @@
 /**
  * Course: CSC 120 (section 2)
  * @author Seyeon Lim
- * @version March 28, 2023
+ * @version April 4, 2023
  * Description: A class that creates a house with a certain name, address, and number of floors. 
  *              The house may or may not have a dining room. Allows residents to move in or out of the
  *              house, print out house description, and return the number of residents, whether a particular
- *              person is a resident of the house, and whether the house has a dining room or not.
+ *              person is a resident of the house, and whether the house has a dining room or not. Allows a person to move to another floor. 
  */
 import java.util.ArrayList;
 
@@ -15,15 +15,27 @@ public class House extends Building {
   private ArrayList<String> residents; 
   private boolean hasDiningRoom;
 
+  /**
+   * Construcs a 1 floor house with its name and address unknown
+   */
   public House() {
     this("<Name Unknown>", "<Address Unknown>", 1, false);
   }
 
+  /**
+   * Constructs a house with its address only
+   * @param address address of the house
+   */
   public House(String address) {
     this(); // Call default constructor
     this.address = address; // Override address
   }
 
+  /**
+   * Construcs a house with its name and address only
+   * @param name name of the house
+   * @param address address of the house
+   */
   public House(String name, String address) {
     this(name, address, 1, false); // Call full constructor with hard-coded # floors
   }
@@ -64,9 +76,7 @@ public class House extends Building {
    * @throws RuntimeException when the person is already a resident of the house.
    */
   public void moveIn(String name) {
-    // check if this.residents contains name
     if (this.residents.contains(name)) {
-      //   if so: throw and exception
       throw new RuntimeException(name + " is already a resident of " + this.name);
     }
     // if we're good to go, add to roster
@@ -119,10 +129,19 @@ public class House extends Building {
     return description;
   }
 
+  /**
+     * A method that prints out all the available options of the house
+     */
   public void showOptions() {
     System.out.println("Available options at " + this.name + ":\n + hasDiningRoom() \n + nResidents() \n + moveIn() \n + moveOut() \n + isResident() \n + toString() \n");
   }
   
+  /**
+     * A method that allows a person to move to another floor when there is an elevator in the house
+     * @param floorNum the number of the floor that the person is trying to access
+     * @throws RuntimeException when the person is not inside the building
+     * @throws RuntimeException when the person tries to access and invalid floor number
+     */
   public void goToFloor(int floorNum) {
     if (this.activeFloor == -1) {
         throw new RuntimeException("You are not inside this House. Must call enter() before navigating between floors.");
