@@ -5,7 +5,6 @@
  *          Description: A class that creates a building with a certain name, address, and number of floors.
  *          Allows access to the name, address, and number of floors of the building. Allows a person to enter or 
  *          exit a building and move to another floor. 
- *          another floor
  */
 public class Building {
 
