@@ -1,3 +1,4 @@
+
 /**
  * Course: CSC 120 (section 2)
  * @author Seyeon Lim
@@ -9,8 +10,9 @@
  */
 import java.util.Hashtable;
 import java.util.Map;
+
 /* This is a stub for the Library class */
-public class Library extends Building{
+public class Library extends Building {
 
   private Hashtable<String, Boolean> collection;
 
@@ -19,30 +21,37 @@ public class Library extends Building{
    */
   public Library() {
     this("<Name Unknown>", "<Address Unknown>", 1);
-}
+  }
 
   /**
    * Constructs a library with its address only
+   * 
    * @param address address of the library
    */
   public Library(String address) {
     this(); // Call default constructor
     this.address = address; // Override address
-}
+  }
 
   /**
    * Constructs a 1 floor library with its name and address only
-   * @param name name of the library
+   * 
+   * @param name    name of the library
    * @param address address of the library
    */
   public Library(String name, String address) {
     this(name, address, 1); // Call full constructor with hard-coded # floors
-}
+  }
+
   /**
-   * Creates a library with a certain name, address, and number of floors. Makes a hashtable
-   * for storing the title of the books in the library along with their availability.
-   * Creates a hashtable for making a collection of books and recording their availability.
-   * @param name the name of the library
+   * Creates a library with a certain name, address, and number of floors. Makes a
+   * hashtable
+   * for storing the title of the books in the library along with their
+   * availability.
+   * Creates a hashtable for making a collection of books and recording their
+   * availability.
+   * 
+   * @param name    the name of the library
    * @param address the address of the library
    * @param nFloors the number of floors of the library
    */
@@ -50,9 +59,10 @@ public class Library extends Building{
     super(name, address, nFloors);
     this.collection = new Hashtable<String, Boolean>();
   }
-  
+
   /**
    * A method that adds a book to the library collection.
+   * 
    * @param title the title of the book being added
    * @throws RuntimeException when the book is already in the collection.
    */
@@ -66,14 +76,16 @@ public class Library extends Building{
 
   /**
    * A method that removes a book from the library collection.
+   * 
    * @param title the title of the book being removed
    * @return the title of the book being removed
-   * @throws RuntimeException if the book being removed does not exist in the collection.
+   * @throws RuntimeException if the book being removed does not exist in the
+   *                          collection.
    */
   public String removeTitle(String title) {
     if (!this.collection.containsKey(title)) {
       throw new RuntimeException(title + " is not in " + this.name);
-    } 
+    }
     this.collection.remove(title);
     System.out.println(title + " removed from " + this.name);
     return title;
@@ -81,6 +93,7 @@ public class Library extends Building{
 
   /**
    * A method that checks out a book.
+   * 
    * @param title the title of the book being checked out.
    * @throws RuntimeException when the book does not exist in the collection.
    * @throws RuntimeException when the book is already checked out.
@@ -97,7 +110,8 @@ public class Library extends Building{
 
   /**
    * A method that returns a book.
-   * @param title the title of the book being returned. 
+   * 
+   * @param title the title of the book being returned.
    * @throws RuntimeException when the book does not exist in the collection
    * @throws RuntimeException when the book is already returned.
    */
@@ -113,6 +127,7 @@ public class Library extends Building{
 
   /**
    * A method that checks if a certain book is in the collection.
+   * 
    * @param title the title of the book
    * @return whether the book is in the collection or not
    */
@@ -122,10 +137,11 @@ public class Library extends Building{
     } else {
       return false;
     }
-  } 
-  
+  }
+
   /**
    * A method that checks if a certain book is available.
+   * 
    * @param title the title of the book
    * @return whether the book is available or not
    */
@@ -135,10 +151,10 @@ public class Library extends Building{
     } else {
       return false;
     }
-  } 
-  
+  }
+
   /**
-   * A method that prints out the collection along with each book's availability. 
+   * A method that prints out the collection along with each book's availability.
    */
   public void printCollection() {
     System.out.println("=====Collection=====");
@@ -147,44 +163,51 @@ public class Library extends Building{
     }
     System.out.println("====================");
   }
-  
+
   /**
    * A method that prints out all the available options of the house
    */
   public void showOptions() {
-    System.out.println("Available options at " + this.name + ":\n + addTitle() \n + removeTitle() \n + checkOut() \n + returnBook()\n + containsTitle() \n + isAvailable()\n + printCollection()\n");
+    System.out.println("Available options at " + this.name
+        + ":\n + addTitle() \n + removeTitle() \n + checkOut() \n + returnBook()\n + containsTitle() \n + isAvailable()\n + printCollection()\n");
   }
 
   /**
-     * A method that allows a person to move to another floor when there is an elevator in the library
-     * @param floorNum the number of the floor that the person is trying to access
-     * @throws RuntimeException when the person is not inside the building
-     * @throws RuntimeException when the person tries to access and invalid floor number
-     */
+   * A method that allows a person to move to another floor when there is an
+   * elevator in the library
+   * 
+   * @param floorNum the number of the floor that the person is trying to access
+   * @throws RuntimeException when the person is not inside the building
+   * @throws RuntimeException when the person tries to access and invalid floor
+   *                          number
+   */
   public void goToFloor(int floorNum) {
-    if (this.activeFloor == -1) {
-        throw new RuntimeException("You are not inside this Library. Must call enter() before navigating between floors.");
-    }
-    if (floorNum < 1 || floorNum > this.nFloors) {
-        throw new RuntimeException("Invalid floor number. Valid range for this Building is 1-" + this.nFloors +".");
-    }
-    if (this.activeFloor > 1) {
-      System.out.println("You are now on floor #" + floorNum + " of " + this.name);
-      this.activeFloor = floorNum;
+    if (this.nFloors > 1) {
+      if (this.activeFloor == -1) {
+        throw new RuntimeException(
+            "You are not inside this Library. Must call enter() before navigating between floors.");
+      }
+      if (floorNum < 1 || floorNum > this.nFloors) {
+        throw new RuntimeException("Invalid floor number. Valid range for this Library is 1-" + this.nFloors + ".");
+      }
+      if (this.activeFloor > 1) {
+        System.out.println("You are now on floor #" + floorNum + " of " + this.name);
+        this.activeFloor = floorNum;
+      }
     } else {
-      System.out.println(this.name + " does not have an elevator.");
+      throw new RuntimeException (this.name + " does not have an elevator.");
     }
-    
   }
 
   /**
    * Demonstration of making a library and using addTitle(...), removeTitle(...),
    * printCollection(), checkOut(...), and returnBook(...) methods.
+   * 
    * @param args
    */
   public static void main(String[] args) {
-    Library neilson = new Library("Neilson", "Blah Blah Street", 4);
-    neilson.showOptions();
+    Library neilson = new Library("Neilson", "Blah Blah Street", 1);
+    neilson.goToFloor(3);
   }
-  
-  }
+
+}

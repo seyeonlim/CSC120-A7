@@ -143,19 +143,20 @@ public class House extends Building {
      * @throws RuntimeException when the person tries to access and invalid floor number
      */
   public void goToFloor(int floorNum) {
-    if (this.activeFloor == -1) {
+    if (this.nFloors > 1) {
+      if (this.activeFloor == -1) {
         throw new RuntimeException("You are not inside this House. Must call enter() before navigating between floors.");
-    }
-    if (floorNum < 1 || floorNum > this.nFloors) {
-        throw new RuntimeException("Invalid floor number. Valid range for this Building is 1-" + this.nFloors +".");
-    }
-    if (this.activeFloor > 1) {
-      System.out.println("You are now on floor #" + floorNum + " of " + this.name);
-      this.activeFloor = floorNum;
+      }
+      if (floorNum < 1 || floorNum > this.nFloors) {
+          throw new RuntimeException("Invalid floor number. Valid range for this House is 1-" + this.nFloors +".");
+      }
+      if (this.activeFloor > 1) {
+        System.out.println("You are now on floor #" + floorNum + " of " + this.name);
+        this.activeFloor = floorNum;
+      } 
     } else {
-      System.out.println(this.name + " does not have an elevator.");
+      throw new RuntimeException (this.name + " does not have an elevator.");
     }
-    
   }
 
   /**
@@ -163,8 +164,8 @@ public class House extends Building {
    * @param args
    */
   public static void main(String[] args) {
-    House morrow = new House("Morrow", "The Quad", 4, false);
-    morrow.showOptions();
+    House morrow = new House("Morrow", "The Quad", 1, false);
+    morrow.goToFloor(2);
 
   }
 
