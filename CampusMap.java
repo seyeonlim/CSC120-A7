@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class CampusMap {
 
     /**
-     * 
+     * An ArrayList for storing buildings made
      */
     ArrayList<Building> buildings;
 

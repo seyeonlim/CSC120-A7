@@ -116,13 +116,6 @@ public class Cafe extends Building {
     }
 
     /**
-     * A method that prints out a message that one cannot access other floors  
-     */
-    public void goToFloor(int floorNum) {
-          System.out.println("You cannot access other floors.");
-        }
-
-    /**
      * Demonstration of making a cafe and using printInventory(), sellCoffee(...), 
      * and restock(...) methods. 
      * @param args

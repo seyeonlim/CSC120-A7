@@ -176,27 +176,13 @@ public class Library extends Building {
   }
 
   /**
-   * A method that allows a person to move to another floor when there is an
-   * elevator in the library
-   * 
+   * A method that allows a person to move to another floor when there is an elevator in the library
    * @param floorNum the number of the floor that the person is trying to access
-   * @throws RuntimeException when the person is not inside the building
-   * @throws RuntimeException when the person tries to access and invalid floor
-   *                          number
+   * @throws RuntimeException when the library does not have an elevator.
    */
   public void goToFloor(int floorNum) {
     if (this.nFloors > 1) {
-      if (this.activeFloor == -1) {
-        throw new RuntimeException(
-            "You are not inside this Library. Must call enter() before navigating between floors.");
-      }
-      if (floorNum < 1 || floorNum > this.nFloors) {
-        throw new RuntimeException("Invalid floor number. Valid range for this Library is 1-" + this.nFloors + ".");
-      }
-      if (this.activeFloor > 1) {
-        System.out.println("You are now on floor #" + floorNum + " of " + this.name);
-        this.activeFloor = floorNum;
-      }
+      super.goToFloor(floorNum);
     } else {
       throw new RuntimeException (this.name + " does not have an elevator.");
     }

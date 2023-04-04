@@ -134,41 +134,32 @@ public class House extends Building {
   }
 
   /**
-     * A method that prints out all the available options of the house
-     */
+   * A method that prints out all the available options of the house
+   */
   public void showOptions() {
     System.out.println("Available options at " + this.name + ":\n + hasDiningRoom() \n + nResidents() \n + moveIn() \n + moveOut() \n + isResident() \n + toString() \n");
   }
   
   /**
-     * A method that allows a person to move to another floor when there is an elevator in the house
-     * @param floorNum the number of the floor that the person is trying to access
-     * @throws RuntimeException when the person is not inside the building
-     * @throws RuntimeException when the person tries to access and invalid floor number
-     */
+   * A method that allows a person to move to another floor when there is an elevator in the house
+   * @param floorNum the number of the floor that the person is trying to access
+   * @throws RuntimeException when the house does not have an elevator.
+   */
   public void goToFloor(int floorNum) {
     if (this.nFloors > 1) {
-      if (this.activeFloor == -1) {
-        throw new RuntimeException("You are not inside this House. Must call enter() before navigating between floors.");
-      }
-      if (floorNum < 1 || floorNum > this.nFloors) {
-          throw new RuntimeException("Invalid floor number. Valid range for this House is 1-" + this.nFloors +".");
-      }
-      if (this.activeFloor > 1) {
-        System.out.println("You are now on floor #" + floorNum + " of " + this.name);
-        this.activeFloor = floorNum;
-      } 
+      super.goToFloor(floorNum);
     } else {
       throw new RuntimeException (this.name + " does not have an elevator.");
     }
   }
 
   /**
-   * Demonstration of making a house and using moveIn(...) and moveOut(...) methods 
+   * Demonstration of making a house and using enter(...) and goToFloor(...) methods 
    * @param args
    */
   public static void main(String[] args) {
-    House morrow = new House("Morrow", "The Quad", 1, false);
+    House morrow = new House("Morrow", "The Quad", 4, false);
+    morrow.enter();
     morrow.goToFloor(2);
 
   }
