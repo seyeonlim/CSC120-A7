@@ -14,7 +14,7 @@ public class Building {
     protected String name;
     protected String address;
     protected int nFloors;
-    protected int activeFloor = -1; // Default value indicating we are not inside this building
+    protected int activeFloor = -1; 
 
     /**
      * Constructs a 1 floor building with its name and address unknown
@@ -92,7 +92,7 @@ public class Building {
         }
         this.activeFloor = 1;
         System.out.println("You are now inside " + this.name + " on the ground floor.");
-        return this; // Return a pointer to the current building
+        return this; 
     }
 
     /**

@@ -31,8 +31,8 @@ public class House extends Building {
    * @param address address of the house
    */
   public House(String address) {
-    this(); // Call default constructor
-    this.address = address; // Override address
+    this(); 
+    this.address = address; 
   }
 
   /**
@@ -41,7 +41,7 @@ public class House extends Building {
    * @param address address of the house
    */
   public House(String name, String address) {
-    this(name, address, 1, false); // Call full constructor with hard-coded # floors
+    this(name, address, 1, false); 
   }
 
   /**
@@ -83,7 +83,6 @@ public class House extends Building {
     if (this.residents.contains(name)) {
       throw new RuntimeException(name + " is already a resident of " + this.name);
     }
-    // if we're good to go, add to roster
     this.residents.add(name);
     System.out.println(name + " has just moved into " + this.name + "! Go say hello :-)");
   }

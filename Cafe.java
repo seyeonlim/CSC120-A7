@@ -29,8 +29,8 @@ public class Cafe extends Building {
      * @param address address of the cafe
      */
     public Cafe(String address) {
-        this(); // Call default constructor
-        this.address = address; // Override address
+        this(); 
+        this.address = address; 
     }
 
     /**
@@ -39,7 +39,7 @@ public class Cafe extends Building {
      * @param address address of the cafe
      */
     public Cafe(String name, String address) {
-        this(name, address, 1); // Call full constructor with hard-coded # floors
+        this(name, address, 1); 
     }
 
     /**
