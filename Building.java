@@ -9,6 +9,9 @@
  */
 public class Building {
 
+    /**
+     * Creating strings for name and address of the building and ints for number of floors and active floors of the building
+     */
     protected String name;
     protected String address;
     protected int nFloors;
