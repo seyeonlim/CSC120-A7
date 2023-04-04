@@ -160,6 +160,7 @@ public class House extends Building {
     House morrow = new House("Morrow", "The Quad", 4, false);
     morrow.enter();
     morrow.goToFloor(2);
+    morrow.goDown();
 
   }
 

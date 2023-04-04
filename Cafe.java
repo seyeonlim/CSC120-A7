@@ -116,13 +116,16 @@ public class Cafe extends Building {
     }
 
     /**
-     * Demonstration of making a cafe and using printInventory(), sellCoffee(...), 
-     * and restock(...) methods. 
+     * Demonstration of making a cafe and using printInventory(), sellCoffee(...), showOptions() 
+     * methods. 
      * @param args
      */
     public static void main(String[] args) {
         Cafe compass = new Cafe("Compass Cafe", "Blah Blah Street", 1);
+        compass.printInventory();
+        compass.sellCoffee(2, 2, 2);
         compass.showOptions();
+        compass.printInventory();
 
     }
     

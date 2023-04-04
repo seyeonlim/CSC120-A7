@@ -190,13 +190,20 @@ public class Library extends Building {
 
   /**
    * Demonstration of making a library and using addTitle(...), removeTitle(...),
-   * printCollection(), checkOut(...), and returnBook(...) methods.
-   * 
+   * printCollection(), checkOut(...), and returnBook(...), enter(), goToFloor(...), goDown() methods.
    * @param args
    */
   public static void main(String[] args) {
-    Library neilson = new Library("Neilson", "Blah Blah Street", 1);
+    Library neilson = new Library("Neilson", "Blah Blah Street", 4);
+    neilson.enter();
     neilson.goToFloor(3);
+    neilson.goDown();
+    neilson.addTitle("Dog");
+    neilson.printCollection();
+    neilson.checkOut("Dog");
+    neilson.returnBook("Dog");
+    neilson.removeTitle("Dog");
+
   }
 
 }
