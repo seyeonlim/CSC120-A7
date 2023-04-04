@@ -14,6 +14,9 @@ import java.util.Map;
 /* This is a stub for the Library class */
 public class Library extends Building {
 
+  /**
+   * private Hashtable for storing books the library has along wiht their availability
+   */
   private Hashtable<String, Boolean> collection;
 
   /**

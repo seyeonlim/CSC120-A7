@@ -8,6 +8,10 @@
 /* This is a stub for the Cafe class */
 public class Cafe extends Building {
 
+    /**
+     * private integers for recording the amount of coffee, sugar packets, creams, and cups 
+     * the cafe has
+     */
     private int nCoffeeOunces; 
     private int nSugarPackets; 
     private int nCreams; 

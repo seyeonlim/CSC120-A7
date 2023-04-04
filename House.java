@@ -12,6 +12,10 @@ import java.util.ArrayList;
 /* This is a stub for the House class */
 public class House extends Building {
 
+  /**
+   * private ArrayList for saving resident names
+   * private boolean for checking whether the house has a dining hall or not
+   */
   private ArrayList<String> residents; 
   private boolean hasDiningRoom;
 
